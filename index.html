@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Hub | Mis Proyectos Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./ico.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient-bg">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+    </div>
+
+    <header class="site-header" id="inicio">
+      <div class="container nav-wrap">
+        <a class="brand" href="#inicio" aria-label="Inicio">
+          <img src="./ico.png" alt="" class="brand-icon" />
+          <span id="brand-name">Portfolio Hub</span>
+        </a>
+
+        <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Navegacion principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#sobre-mi">Sobre mi</a>
+          <a id="nav-github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" id="hero-kicker">Developer Portfolio</p>
+            <h1 id="hero-title">Mis Proyectos Web en un solo lugar</h1>
+            <p class="lead" id="hero-subtitle">
+              Explora cada proyecto, revisa tecnologias, abre el codigo fuente y entra directo al
+              deploy.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#proyectos" class="btn btn-primary" id="cta-projects">Ver proyectos</a>
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noreferrer"
+                class="btn btn-ghost"
+                id="cta-github"
+                >Mi GitHub</a
+              >
+              <a href="#contacto" class="btn btn-ghost" id="cta-contact">Contacto</a>
+            </div>
+
+            <ul class="hero-metrics" id="hero-metrics"></ul>
+          </div>
+
+          <aside class="hero-highlight">
+            <p class="panel-label">Vista destacada</p>
+            <a
+              href="https://demo-neo-commerce.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              class="preview preview-commerce"
+              id="featured-link"
+            >
+              <div class="browser-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="preview-ui">
+                <div class="ui-strip"></div>
+                <div class="ui-grid">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div class="ui-line"></div>
+              </div>
+              <p id="featured-title">Proyecto destacado</p>
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="filters section-sm">
+        <div class="container filter-card">
+          <div class="filter-row">
+            <label class="field">
+              <span>Buscar proyecto</span>
+              <input type="search" data-filter="search" id="search-input" />
+            </label>
+
+            <label class="field">
+              <span id="tech-filter-label">Filtrar por tecnologia</span>
+              <select data-filter="tech" id="tech-filter">
+                <option value="all">Todas</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span id="type-filter-label">Tipo de proyecto</span>
+              <select data-filter="type" id="type-filter">
+                <option value="all">Todos</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects section" id="proyectos">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" id="projects-eyebrow">Proyectos</p>
+            <h2 id="projects-title">Galeria de productos digitales</h2>
+            <p id="projects-description">
+              Cada preview es clicable para entrar al proyecto. Tambien puedes revisar codigo,
+              stack y detalles tecnicos por card.
+            </p>
+          </div>
+
+          <div class="project-grid" data-project-grid></div>
+
+          <p class="empty-state" data-empty-state hidden>
+            No hay resultados para los filtros activos. Prueba otra tecnologia o termino de
+            busqueda.
+          </p>
+        </div>
+      </section>
+
+      <section class="about section" id="sobre-mi">
+        <div class="container about-card">
+          <div class="about-copy">
+            <p class="eyebrow" id="about-eyebrow">Sobre mi</p>
+            <h2 id="about-title">Desarrollo web con foco en producto y experiencia</h2>
+            <p id="about-description">
+              Soy desarrollador web orientado a construir interfaces limpias, funcionales y con
+              impacto real de negocio.
+            </p>
+          </div>
+          <div class="about-points" id="about-points"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacto">
+      <div class="container footer-wrap">
+        <p id="footer-copy">Portfolio Hub (c) 2026</p>
+        <div class="footer-links">
+          <a id="footer-github" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a id="footer-email" href="mailto:fabynf31@gmail.com">fabynf31@gmail.com</a>
+          <a id="footer-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal" id="project-modal" hidden aria-hidden="true">
+      <button class="modal-backdrop" type="button" data-close-modal aria-label="Cerrar modal"></button>
+      <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">x</button>
+
+        <div class="modal-head">
+          <h3 id="modal-title"></h3>
+          <span class="status-pill" id="modal-status"></span>
+        </div>
+
+        <p class="modal-objective" id="modal-objective"></p>
+
+        <div class="modal-block">
+          <h4>Funcionalidades principales</h4>
+          <ul id="modal-features"></ul>
+        </div>
+
+        <div class="modal-block">
+          <h4>Stack tecnologico</h4>
+          <ul class="tag-list" id="modal-stack"></ul>
+        </div>
+
+        <div class="modal-block">
+          <h4>Capturas extra</h4>
+          <div class="shot-grid" id="modal-shots"></div>
+        </div>
+
+        <div class="modal-actions">
+          <a id="modal-code" target="_blank" rel="noreferrer">Ver GitHub</a>
+          <a id="modal-live" target="_blank" rel="noreferrer">Ver deploy</a>
+        </div>
+        <p class="modal-note" id="modal-note"></p>
+      </section>
+    </div>
+
+    <template id="project-card-template">
+      <article class="project-card">
+        <a class="project-preview preview" target="_blank" rel="noreferrer">
+          <div class="browser-bar"><span></span><span></span><span></span></div>
+          <div class="preview-ui">
+            <div class="ui-strip"></div>
+            <div class="ui-grid"><div></div><div></div><div></div></div>
+            <div class="ui-line"></div>
+          </div>
+        </a>
+
+        <div class="project-content">
+          <h3 class="project-name"></h3>
+          <p class="project-description"></p>
+          <ul class="tag-list project-tags"></ul>
+          <div class="project-meta">
+            <span class="project-status"></span>
+            <span class="project-hint">Haz clic para ver detalles</span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./content.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
