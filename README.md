@@ -1,4 +1,11 @@
-# Portfolio Hub Editable (Version simple)
+# Fabian Portfolio editable
+
+La landing ahora tiene dos formas de gestion:
+
+- Editar `content.js` para cambios permanentes.
+- Abrir el boton **Gestionar** en la web y usar el PIN local `fabian2026`.
+
+Desde el panel puedes pegar un repo de GitHub, traer nombre, descripcion y lenguajes reales con la API de GitHub, revisar los campos y guardar. Esos proyectos se guardan en `localStorage` del navegador. Si luego quieres pasarlos a codigo, usa **Exportar JSON** y pega el resultado en `content.js`.
 
 Solo necesitas tocar **`content.js`**.
 

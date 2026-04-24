@@ -1,10 +1,14 @@
 window.PORTFOLIO_CONTENT = {
   site: {
-    pageTitle: "Portfolio Hub | Fabian Navarro",
+    pageTitle: "Fabian Portfolio | Proyectos Web",
     brandName: "Fabian Portfolio",
     copyright: "Fabian Portfolio (c) 2026",
     email: "fabynf31@gmail.com",
     ownerRole: "Web Developer"
+  },
+
+  admin: {
+    pin: "fabian2026"
   },
 
   links: {
@@ -13,18 +17,19 @@ window.PORTFOLIO_CONTENT = {
   },
 
   hero: {
-    title: "Mis Proyectos Web en un solo lugar",
+    title: "Construyo experiencias web claras, utiles y memorables.",
+    highlightWord: "utiles",
     subtitle:
-      "Explora mis proyectos, revisa detalles tecnicos y abre el codigo en GitHub desde un panel visual limpio y profesional.",
+      "Desarrollo productos digitales con foco en frontend, UX/UI y codigo limpio. Me gusta convertir ideas en interfaces simples, interactivas y bien ejecutadas.",
     ctas: {
       projects: "Ver proyectos",
       github: "Mi GitHub",
       contact: "Contacto"
     },
     metrics: [
-      { value: "5", label: "Repos principales" },
-      { value: "Python + JS", label: "Stack principal" },
-      { value: "100%", label: "Hecho por mi" }
+      { value: "6+", label: "Proyectos" },
+      { value: "100%", label: "Hecho por mi" },
+      { value: "GitHub", label: "Lenguajes auto" }
     ],
     featured: {
       title: "Python Master",
@@ -42,7 +47,7 @@ window.PORTFOLIO_CONTENT = {
 
   sections: {
     projectsEyebrow: "Proyectos",
-    projectsTitle: "Galeria de proyectos",
+    projectsTitle: "Mis Proyectos",
     projectsDescription:
       "Haz clic en cualquier tarjeta para abrir una vista de detalle con informacion del proyecto, stack y enlace al codigo.",
     aboutEyebrow: "Sobre mi",

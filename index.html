@@ -3,166 +3,155 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Hub | Mis Proyectos Web</title>
+    <title>Fabian Portfolio | Proyectos Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="./ico.png" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="ambient-bg">
-      <span class="orb orb-1"></span>
-      <span class="orb orb-2"></span>
-      <span class="orb orb-3"></span>
-    </div>
-
     <header class="site-header" id="inicio">
       <div class="container nav-wrap">
         <a class="brand" href="#inicio" aria-label="Inicio">
           <img src="./ico.png" alt="" class="brand-icon" />
-          <span id="brand-name">Portfolio Hub</span>
+          <span id="brand-name">Fabian Portfolio</span>
         </a>
 
         <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button>
 
         <nav class="site-nav" id="site-nav" aria-label="Navegacion principal">
-          <a href="#inicio">Inicio</a>
+          <a href="#inicio" class="is-active">Inicio</a>
           <a href="#proyectos">Proyectos</a>
           <a href="#sobre-mi">Sobre mi</a>
           <a id="nav-github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
           <a href="#contacto">Contacto</a>
         </nav>
+
+        <button class="header-admin" type="button" data-open-admin>Gestionar</button>
+        <a class="header-cta" href="#contacto">Hablemos <span aria-hidden="true">-></span></a>
       </div>
     </header>
 
     <main>
       <section class="hero section">
         <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow" id="hero-kicker">Developer Portfolio</p>
-            <h1 id="hero-title">Mis Proyectos Web en un solo lugar</h1>
+          <div class="hero-copy" data-animate>
+            <p class="hello" id="hero-kicker">Hola! Soy Fabian</p>
+            <h1 id="hero-title">Construyo experiencias web claras, utiles y memorables.</h1>
             <p class="lead" id="hero-subtitle">
-              Explora cada proyecto, revisa tecnologias, abre el codigo fuente y entra directo al
-              deploy.
+              Desarrollo productos digitales con foco en frontend, UX/UI y codigo limpio. Me gusta
+              convertir ideas en interfaces simples, interactivas y bien ejecutadas.
             </p>
 
             <div class="hero-actions">
               <a href="#proyectos" class="btn btn-primary" id="cta-projects">Ver proyectos</a>
-              <a
-                href="https://github.com/"
-                target="_blank"
-                rel="noreferrer"
-                class="btn btn-ghost"
-                id="cta-github"
-                >Mi GitHub</a
-              >
-              <a href="#contacto" class="btn btn-ghost" id="cta-contact">Contacto</a>
+              <a href="https://github.com/" target="_blank" rel="noreferrer" class="btn btn-light" id="cta-github">
+                Mi GitHub
+              </a>
             </div>
 
             <ul class="hero-metrics" id="hero-metrics"></ul>
           </div>
 
-          <aside class="hero-highlight">
-            <p class="panel-label">Vista destacada</p>
-            <a
-              href="https://demo-neo-commerce.vercel.app"
-              target="_blank"
-              rel="noreferrer"
-              class="preview preview-commerce"
-              id="featured-link"
-            >
-              <div class="browser-bar">
-                <span></span><span></span><span></span>
+          <aside class="hero-highlight" data-animate>
+            <div class="highlight-copy">
+              <p class="panel-label">Proyecto destacado</p>
+              <h2 id="featured-title">Python Master</h2>
+              <p id="featured-description">Coleccion de practicas y ejercicios organizados por temas.</p>
+              <div class="featured-tags" id="featured-tags"></div>
+              <a href="#proyectos" class="btn btn-dark" id="featured-link">Ver proyecto <span aria-hidden="true">-></span></a>
+            </div>
+            <div class="feature-art">
+              <span class="shape shape-yellow"></span>
+              <span class="shape shape-purple"></span>
+              <div class="mock-window">
+                <div class="browser-bar"><span></span><span></span><span></span></div>
+                <img id="featured-image" src="./assets/previews/pythonmaster.png" alt="" />
               </div>
-              <div class="preview-ui">
-                <div class="ui-strip"></div>
-                <div class="ui-grid">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-                <div class="ui-line"></div>
-              </div>
-              <p id="featured-title">Proyecto destacado</p>
-            </a>
+            </div>
           </aside>
-        </div>
-      </section>
-
-      <section class="filters section-sm">
-        <div class="container filter-card">
-          <div class="filter-row">
-            <label class="field">
-              <span>Buscar proyecto</span>
-              <input type="search" data-filter="search" id="search-input" />
-            </label>
-
-            <label class="field">
-              <span id="tech-filter-label">Filtrar por tecnologia</span>
-              <select data-filter="tech" id="tech-filter">
-                <option value="all">Todas</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span id="type-filter-label">Tipo de proyecto</span>
-              <select data-filter="type" id="type-filter">
-                <option value="all">Todos</option>
-              </select>
-            </label>
-          </div>
         </div>
       </section>
 
       <section class="projects section" id="proyectos">
         <div class="container">
-          <div class="section-head">
-            <p class="eyebrow" id="projects-eyebrow">Proyectos</p>
-            <h2 id="projects-title">Galeria de productos digitales</h2>
-            <p id="projects-description">
-              Cada preview es clicable para entrar al proyecto. Tambien puedes revisar codigo,
-              stack y detalles tecnicos por card.
-            </p>
+          <div class="section-head" data-animate>
+            <div>
+              <h2 id="projects-title">Mis Proyectos <span></span></h2>
+              <p id="projects-description">Explora una seleccion de mis trabajos recientes.</p>
+            </div>
+            <button class="btn btn-light compact" type="button" data-open-admin>Agregar proyecto <span aria-hidden="true">+</span></button>
+          </div>
+
+          <div class="filters" data-animate>
+            <label class="field">
+              <span>Buscar</span>
+              <input type="search" data-filter="search" id="search-input" />
+            </label>
+            <label class="field">
+              <span id="tech-filter-label">Tecnologia</span>
+              <select data-filter="tech" id="tech-filter">
+                <option value="all">Todas</option>
+              </select>
+            </label>
+            <label class="field">
+              <span id="type-filter-label">Tipo</span>
+              <select data-filter="type" id="type-filter">
+                <option value="all">Todos</option>
+              </select>
+            </label>
           </div>
 
           <div class="project-grid" data-project-grid></div>
 
           <p class="empty-state" data-empty-state hidden>
-            No hay resultados para los filtros activos. Prueba otra tecnologia o termino de
-            busqueda.
+            No hay resultados para esos filtros. Prueba otra busqueda.
           </p>
         </div>
       </section>
 
       <section class="about section" id="sobre-mi">
-        <div class="container about-card">
-          <div class="about-copy">
-            <p class="eyebrow" id="about-eyebrow">Sobre mi</p>
-            <h2 id="about-title">Desarrollo web con foco en producto y experiencia</h2>
-            <p id="about-description">
-              Soy desarrollador web orientado a construir interfaces limpias, funcionales y con
-              impacto real de negocio.
-            </p>
+        <div class="container about-grid">
+          <div class="avatar-card" data-animate>
+            <div class="avatar-face">
+              <span class="hair"></span>
+              <span class="face"></span>
+              <span class="hoodie"></span>
+            </div>
+            <p>Disponible para nuevos proyectos <span></span></p>
           </div>
-          <div class="about-points" id="about-points"></div>
+
+          <div class="about-copy" data-animate>
+            <h2 id="about-title">Sobre mi <span></span></h2>
+            <p id="about-description">
+              Me apasiona crear productos web que combinen diseno, funcionalidad y rendimiento.
+            </p>
+            <div class="about-points" id="about-points"></div>
+          </div>
+
+          <aside class="contact-card" id="contacto" data-animate>
+            <h2>Tienes una idea?</h2>
+            <p>Estoy abierto a colaboraciones y nuevos retos. Hablemos sobre tu proximo proyecto.</p>
+            <a class="btn btn-dark" id="footer-email" href="mailto:fabynf31@gmail.com">Enviar mensaje <span aria-hidden="true">-></span></a>
+            <a id="footer-github" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a id="footer-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </aside>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer" id="contacto">
+    <footer class="site-footer">
       <div class="container footer-wrap">
-        <p id="footer-copy">Portfolio Hub (c) 2026</p>
-        <div class="footer-links">
-          <a id="footer-github" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a id="footer-email" href="mailto:fabynf31@gmail.com">fabynf31@gmail.com</a>
-          <a id="footer-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"
-            >LinkedIn</a
-          >
-        </div>
+        <a class="brand" href="#inicio">
+          <img src="./ico.png" alt="" class="brand-icon" />
+          <span id="footer-brand">Fabian Portfolio</span>
+        </a>
+        <p id="footer-copy">Fabian Portfolio (c) 2026</p>
+        <a class="footer-pill" href="#inicio">Volver arriba</a>
       </div>
     </footer>
 
@@ -170,29 +159,19 @@
       <button class="modal-backdrop" type="button" data-close-modal aria-label="Cerrar modal"></button>
       <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">x</button>
-
         <div class="modal-head">
           <h3 id="modal-title"></h3>
           <span class="status-pill" id="modal-status"></span>
         </div>
-
         <p class="modal-objective" id="modal-objective"></p>
-
         <div class="modal-block">
           <h4>Funcionalidades principales</h4>
           <ul id="modal-features"></ul>
         </div>
-
         <div class="modal-block">
           <h4>Stack tecnologico</h4>
           <ul class="tag-list" id="modal-stack"></ul>
         </div>
-
-        <div class="modal-block">
-          <h4>Capturas extra</h4>
-          <div class="shot-grid" id="modal-shots"></div>
-        </div>
-
         <div class="modal-actions">
           <a id="modal-code" target="_blank" rel="noreferrer">Ver GitHub</a>
           <a id="modal-live" target="_blank" rel="noreferrer">Ver deploy</a>
@@ -201,30 +180,99 @@
       </section>
     </div>
 
-    <template id="project-card-template">
-      <article class="project-card">
-        <a class="project-preview preview" target="_blank" rel="noreferrer">
-          <div class="browser-bar"><span></span><span></span><span></span></div>
-          <div class="preview-ui">
-            <div class="ui-strip"></div>
-            <div class="ui-grid"><div></div><div></div><div></div></div>
-            <div class="ui-line"></div>
-          </div>
-        </a>
+    <div class="admin-shell" id="admin-panel" hidden aria-hidden="true">
+      <button class="modal-backdrop" type="button" data-close-admin aria-label="Cerrar panel"></button>
+      <section class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+        <button class="modal-close" type="button" data-close-admin aria-label="Cerrar">x</button>
+        <div class="admin-login" data-admin-login>
+          <p class="panel-label">Acceso privado</p>
+          <h2 id="admin-title">Gestionar proyectos</h2>
+          <p>PIN local por defecto: <strong>fabian2026</strong>. Puedes cambiarlo en `content.js`.</p>
+          <label class="field">
+            <span>PIN</span>
+            <input type="password" data-admin-pin autocomplete="current-password" />
+          </label>
+          <button class="btn btn-dark" type="button" data-admin-enter>Entrar</button>
+        </div>
 
+        <div class="admin-workspace" data-admin-workspace hidden>
+          <div class="admin-head">
+            <div>
+              <p class="panel-label">Panel local</p>
+              <h2>Agregar proyecto</h2>
+            </div>
+            <button class="btn btn-light compact" type="button" data-admin-logout>Salir</button>
+          </div>
+
+          <form class="admin-form" data-project-form>
+            <label class="field full">
+              <span>Repositorio GitHub</span>
+              <input name="repo" type="url" placeholder="https://github.com/usuario/repositorio" required />
+            </label>
+            <label class="field">
+              <span>Nombre</span>
+              <input name="name" type="text" placeholder="Se rellena desde GitHub" />
+            </label>
+            <label class="field">
+              <span>Deploy</span>
+              <input name="liveUrl" type="url" placeholder="https://..." />
+            </label>
+            <label class="field full">
+              <span>Descripcion</span>
+              <textarea name="shortDescription" rows="3" placeholder="Se rellena desde GitHub"></textarea>
+            </label>
+            <label class="field">
+              <span>Tipo</span>
+              <input name="type" type="text" placeholder="webapp, juego, python..." />
+            </label>
+            <label class="field">
+              <span>Estado</span>
+              <input name="status" type="text" value="Terminado" />
+            </label>
+            <label class="field full">
+              <span>Imagen preview opcional</span>
+              <input name="previewImage" type="text" placeholder="./assets/previews/mi-imagen.png" />
+            </label>
+            <div class="admin-actions full">
+              <button class="btn btn-light" type="button" data-import-github>Traer datos de GitHub</button>
+              <button class="btn btn-dark" type="submit">Guardar proyecto</button>
+            </div>
+          </form>
+
+          <p class="admin-message" data-admin-message></p>
+          <div class="stored-projects" data-stored-projects></div>
+          <div class="admin-actions">
+            <button class="btn btn-light compact" type="button" data-export-projects>Exportar JSON</button>
+            <button class="btn btn-danger compact" type="button" data-clear-local>Limpiar proyectos locales</button>
+          </div>
+          <textarea class="export-box" data-export-box rows="7" readonly hidden></textarea>
+        </div>
+      </section>
+    </div>
+
+    <template id="project-card-template">
+      <article class="project-card" data-animate>
+        <a class="project-preview" target="_blank" rel="noreferrer">
+          <span class="badge badge-featured" hidden>Destacado</span>
+          <span class="project-icon"></span>
+          <img class="preview-image" alt="" loading="lazy" decoding="async" />
+        </a>
         <div class="project-content">
           <h3 class="project-name"></h3>
           <p class="project-description"></p>
           <ul class="tag-list project-tags"></ul>
           <div class="project-meta">
             <span class="project-status"></span>
-            <span class="project-hint">Haz clic para ver detalles</span>
+            <span class="project-year">2026</span>
+            <span class="project-hint">Ver detalle -></span>
           </div>
         </div>
       </article>
     </template>
 
-    <script src="./content.js"></script>
-    <script src="./script.js"></script>
+    <script src="./content.js" defer></script>
+    <script src="./script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   </body>
 </html>
