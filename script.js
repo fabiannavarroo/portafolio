@@ -41,6 +41,7 @@ const exportBox = document.querySelector("[data-export-box]");
 let projects = [];
 let projectById = new Map();
 let lastFocused = null;
+let animationsStarted = false;
 
 const toKey = (value) =>
   String(value || "")
@@ -142,6 +143,8 @@ const normalizeProject = (input, index) => {
     liveUrl: base.liveUrl || "",
     codeUrl: base.codeUrl || base.repo || "",
     previewImage: base.previewImage || "",
+    logoImage: base.logoImage || "",
+    isPrivate: Boolean(base.isPrivate),
     year: base.year || "2026",
     source: base.source || "content"
   };
@@ -282,7 +285,17 @@ const createCard = (project, index) => {
   if (index > 0) node.style.background = COLORS[(index - 1) % COLORS.length];
 
   if (badge) badge.hidden = index !== 0;
-  if (icon) icon.textContent = iconForProject(project);
+  if (icon) {
+    icon.innerHTML = "";
+    if (project.logoImage) {
+      const logo = document.createElement("img");
+      logo.src = project.logoImage;
+      logo.alt = "";
+      icon.append(logo);
+    } else {
+      icon.textContent = iconForProject(project);
+    }
+  }
   if (name) name.textContent = project.name || "Proyecto";
   if (description) description.textContent = project.shortDescription || "";
   if (status) status.textContent = project.status || DEFAULT_TEXT.status;
@@ -294,7 +307,7 @@ const createCard = (project, index) => {
   }
 
   if (previewImage) {
-    previewImage.src = project.previewImage || buildCaptureUrl(project.liveUrl) || "./ico.png";
+    previewImage.src = project.previewImage || project.logoImage || buildCaptureUrl(project.liveUrl) || "./ico.png";
     previewImage.alt = "";
     previewImage.addEventListener("error", () => {
       previewImage.src = "./ico.png";
@@ -414,14 +427,27 @@ const openModal = (projectId) => {
   if (modalTitle) modalTitle.textContent = project.name || "Proyecto";
   if (modalStatus) modalStatus.textContent = project.status || DEFAULT_TEXT.status;
   if (modalObjective) modalObjective.textContent = project.objective || DEFAULT_TEXT.objective;
-  if (modalCode) modalCode.href = project.codeUrl || "#";
+  if (modalCode) {
+    modalCode.hidden = project.isPrivate || !project.codeUrl;
+    modalCode.href = project.isPrivate ? "#" : project.codeUrl || "#";
+  }
   fillList(modalFeatures, project.features || []);
   fillList(modalStack, project.stack || project.tech || []);
 
   if (modalLive) {
-    modalLive.hidden = !project.liveUrl;
-    modalLive.href = project.liveUrl || "#";
-    if (modalNote) modalNote.textContent = project.liveUrl ? "" : "Este proyecto no tiene deploy publico por ahora.";
+      modalLive.hidden = !project.liveUrl;
+      modalLive.href = project.liveUrl || "#";
+    if (modalNote) {
+      if (!project.liveUrl) {
+        modalNote.textContent = project.isPrivate
+          ? "El codigo de este proyecto esta en un repositorio privado."
+          : "Este proyecto no tiene deploy publico por ahora.";
+      } else {
+        modalNote.textContent = project.isPrivate
+          ? "El codigo de este proyecto esta en un repositorio privado."
+          : "";
+      }
+    }
   }
 
   openLayer(modal);
@@ -651,7 +677,9 @@ const setupEvents = () => {
 };
 
 const initAnimations = () => {
+  if (animationsStarted) return;
   if (!window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  animationsStarted = true;
   const hasScrollTrigger = Boolean(window.ScrollTrigger);
   if (hasScrollTrigger) window.gsap.registerPlugin(window.ScrollTrigger);
   window.gsap.from(".site-header", { y: -24, opacity: 0, duration: 0.6, ease: "power3.out" });
@@ -674,7 +702,12 @@ const initAnimations = () => {
       duration: 0.7,
       ease: "power3.out",
       immediateRender: false,
-      scrollTrigger: { trigger: element, start: "top 84%", once: true }
+      scrollTrigger: {
+        trigger: element,
+        start: "top 84%",
+        end: "bottom 14%",
+        toggleActions: "play none none reverse"
+      }
     });
   });
 };
@@ -691,7 +724,14 @@ const animateCards = () => {
       ease: "power3.out",
       overwrite: true,
       immediateRender: false,
-      scrollTrigger: window.ScrollTrigger ? { trigger: ".project-grid", start: "top 88%", once: true } : undefined
+      scrollTrigger: window.ScrollTrigger
+        ? {
+            trigger: ".project-grid",
+            start: "top 88%",
+            end: "bottom 14%",
+            toggleActions: "play none none reverse"
+          }
+        : undefined
     }
   );
 };

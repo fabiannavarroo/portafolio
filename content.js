@@ -27,7 +27,7 @@ window.PORTFOLIO_CONTENT = {
       contact: "Contacto"
     },
     metrics: [
-      { value: "6+", label: "Proyectos" },
+      { value: "11+", label: "Proyectos" },
       { value: "100%", label: "Hecho por mi" },
       { value: "GitHub", label: "Lenguajes auto" }
     ],
@@ -86,6 +86,7 @@ window.PORTFOLIO_CONTENT = {
   projects: [
     {
       repo: "https://github.com/fabiannavarroo/python-master",
+      isPrivate: true,
       liveUrl: "https://python-master-two.vercel.app/",
       previewImage: "./assets/previews/pythonmaster.png",
       shortDescription: "Coleccion de practicas y ejercicios en Python.",
@@ -98,8 +99,10 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       repo: "https://github.com/fabiannavarroo/adivina-juego",
+      isPrivate: true,
       liveUrl: "https://adivina-juego.onrender.com/",
       previewImage: "./assets/previews/adivinajuego.png",
+      logoImage: "./assets/github/adivina-github.svg",
       shortDescription: "Juego de adivinanza con dinamica simple y rapida.",
       type: "juego",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -110,8 +113,10 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       repo: "https://github.com/fabiannavarroo/mini-juegos",
-      liveUrl: "https://juegos-faby.dev/",
-      previewImage: "./assets/previews/minijeugos.png",
+      isPrivate: true,
+      liveUrl: "https://mini-juegos-neon.vercel.app",
+      previewImage: "./assets/github/mini-juegos-cover.png",
+      logoImage: "./assets/github/mini-juegos-cover.png",
       shortDescription: "Pack de mini juegos web para practicar interaccion y logica.",
       type: "juego",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -122,7 +127,10 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       repo: "https://github.com/fabiannavarroo/spoti-games",
+      isPrivate: true,
       liveUrl: "https://spoti-games-hazel.vercel.app/",
+      previewImage: "./assets/github/spoti-games-ico.png",
+      logoImage: "./assets/github/spoti-games-ico.png",
       shortDescription: "Proyecto de juegos inspirado en dinamicas relacionadas con musica.",
       type: "juego",
       tech: ["JavaScript", "HTML", "CSS"],
@@ -133,6 +141,7 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       repo: "https://github.com/fabiannavarroo/PROYECTO-FINAL-PACMAN",
+      previewImage: "./assets/previews/pythonmaster.png",
       shortDescription: "Version web de Pacman como proyecto final.",
       type: "python",
       tech: ["Python", "Pygame"],
@@ -143,14 +152,87 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       repo: "https://github.com/fabiannavarroo/spoti-sub",
+      isPrivate: true,
       liveUrl: "https://faby-spotify.web.app",
       name: "Spoti Sub",
+      previewImage: "./assets/github/spoti-sub-logo.png",
+      logoImage: "./assets/github/spoti-sub-logo.png",
       shortDescription: "Web de suscripcion para contenido relacionado con Spotify.",
       type: "webapp",
-      tech: ["JavaScript", "Firebase", "HTML", "CSS"],
+      tech: ["TypeScript", "Firebase", "HTML", "CSS"],
       status: "Terminado",
       objective: "Gestionar suscripcion y acceso a funcionalidades premium.",
       features: ["Registro de usuarios", "Flujo de suscripcion", "Panel de acceso"],
+      previewTheme: "music"
+    },
+    {
+      repo: "https://github.com/fabiannavarroo/vuelos-barquitos",
+      isPrivate: true,
+      name: "Vuelos Barquitos",
+      shortDescription:
+        "Tracker 3D en tiempo real para aviones y barcos sobre un globo CesiumJS.",
+      type: "experimento 3D",
+      tech: ["TypeScript", "CesiumJS", "WebSocket", "Next.js"],
+      status: "Incompleto",
+      objective:
+        "Visualizar posiciones de aeronaves y barcos en tiempo real con una experiencia 3D.",
+      features: ["Globo 3D", "Streaming WebSocket", "Filtros por entidad", "Panel de detalle"],
+      previewTheme: "dashboard"
+    },
+    {
+      repo: "https://github.com/fabiannavarroo/gastos",
+      isPrivate: true,
+      liveUrl: "https://gastos-wine.vercel.app",
+      name: "Gastos",
+      previewImage: "./assets/github/gastos-icon.png",
+      logoImage: "./assets/github/gastos-icon.png",
+      shortDescription: "App para controlar gastos y visualizar movimientos personales.",
+      type: "webapp",
+      tech: ["TypeScript", "JavaScript", "HTML", "CSS"],
+      status: "En progreso",
+      objective: "Organizar gastos con una interfaz clara y rapida.",
+      features: ["Registro de movimientos", "Resumen visual", "Persistencia de datos"],
+      previewTheme: "dashboard"
+    },
+    {
+      repo: "https://github.com/fabiannavarroo/menu-web",
+      isPrivate: true,
+      liveUrl: "https://menu-pruebas-faby.vercel.app/",
+      name: "Menu Web",
+      shortDescription: "Prueba de menu digital desplegable para una experiencia rapida.",
+      type: "webapp",
+      tech: ["TypeScript", "JavaScript", "HTML", "CSS"],
+      status: "En progreso",
+      objective: "Probar una carta digital usable desde movil.",
+      features: ["Categorias", "Vista responsive", "Deploy publico"],
+      previewTheme: "agency"
+    },
+    {
+      repo: "https://github.com/fabiannavarroo/Web--Regalo",
+      isPrivate: true,
+      liveUrl: "https://feliz-cumple-albita.vercel.app",
+      name: "Web Regalo",
+      shortDescription: "Landing personal de felicitacion con una experiencia visual sencilla.",
+      type: "landing",
+      tech: ["HTML", "CSS", "JavaScript"],
+      status: "Terminado",
+      objective: "Crear una pagina regalo personalizada y publica.",
+      features: ["Animacion visual", "Diseno responsive", "Deploy en Vercel"],
+      previewTheme: "agency"
+    },
+    {
+      repo: "https://github.com/Lucacas05/flowpal",
+      isPrivate: true,
+      liveUrl: "https://flowpal-teal.vercel.app",
+      name: "FlowPal",
+      previewImage: "./assets/github/flowpal-concert-stage.jpg",
+      logoImage: "./assets/github/flowpal-concert-stage.jpg",
+      shortDescription: "App React + Supabase para convertir prompts de ambiente en playlists.",
+      type: "hackathon",
+      tech: ["TypeScript", "React", "Supabase", "Vite"],
+      status: "En progreso",
+      objective: "Generar playlists con un flujo musical intencional a partir de lenguaje natural.",
+      features: ["Landing pulida", "Demo IA", "Playlists por mood", "Base colaborativa"],
       previewTheme: "music"
     }
   ]
