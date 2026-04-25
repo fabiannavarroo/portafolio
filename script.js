@@ -42,6 +42,8 @@ let projects = [];
 let projectById = new Map();
 let lastFocused = null;
 let animationsStarted = false;
+let fallbackAnimationsStarted = false;
+let animationAttempts = 0;
 
 const toKey = (value) =>
   String(value || "")
@@ -337,7 +339,7 @@ const renderProjects = (items) => {
   });
   projectGrid.append(fragment);
   if (emptyState) emptyState.hidden = items.length !== 0;
-  animateCards();
+  refreshScrollAnimations();
 };
 
 const fillFilterOptions = () => {
@@ -679,8 +681,13 @@ const setupEvents = () => {
 const initAnimations = () => {
   if (animationsStarted) return;
   if (!window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  animationsStarted = true;
   const hasScrollTrigger = Boolean(window.ScrollTrigger);
+  if (!hasScrollTrigger) {
+    initFallbackAnimations();
+    return;
+  }
+  animationsStarted = true;
+  document.body.classList.remove("use-fallback-motion");
   if (hasScrollTrigger) window.gsap.registerPlugin(window.ScrollTrigger);
   window.gsap.from(".site-header", { y: -24, opacity: 0, duration: 0.6, ease: "power3.out" });
   window.gsap.from(".hero-copy > *", { y: 28, opacity: 0, duration: 0.75, stagger: 0.08, ease: "power3.out" });
@@ -696,29 +703,84 @@ const initAnimations = () => {
   });
   animateCards();
   document.querySelectorAll(".about-grid > *, .section-head, .filters").forEach((element) => {
-    window.gsap.from(element, {
-      y: 34,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power3.out",
-      immediateRender: false,
-      scrollTrigger: {
-        trigger: element,
-        start: "top 84%",
-        end: "bottom 14%",
-        toggleActions: "play none none reverse"
+    window.gsap.fromTo(
+      element,
+      { y: 34, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power3.out",
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 84%",
+          end: "bottom 14%",
+          toggleActions: "restart none none reverse"
+        }
       }
-    });
+    );
   });
+};
+
+const initFallbackAnimations = () => {
+  if (animationsStarted || fallbackAnimationsStarted || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  fallbackAnimationsStarted = true;
+  document.body.classList.add("use-fallback-motion");
+
+  const targets = document.querySelectorAll(
+    ".hero-copy > *, .hero-highlight, .section-head, .filters, .project-card, .about-grid > *"
+  );
+
+  targets.forEach((element) => element.classList.add("motion-reveal"));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("motion-visible", entry.isIntersecting);
+      });
+    },
+    {
+      threshold: 0.04,
+      rootMargin: "0px 0px 18% 0px"
+    }
+  );
+
+  targets.forEach((element) => {
+    observer.observe(element);
+  });
+};
+
+const probeAnimations = () => {
+  initAnimations();
+  if (animationsStarted || fallbackAnimationsStarted) return;
+  animationAttempts += 1;
+  if (animationAttempts < 6) {
+    window.setTimeout(probeAnimations, 350);
+  } else {
+    initFallbackAnimations();
+  }
+};
+
+const refreshScrollAnimations = () => {
+  if (window.ScrollTrigger) {
+    window.ScrollTrigger.refresh();
+  }
+  if (fallbackAnimationsStarted) {
+    document.querySelectorAll(".project-card:not(.motion-reveal)").forEach((element) => {
+      element.classList.add("motion-reveal");
+    });
+  }
 };
 
 const animateCards = () => {
   if (!window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   window.gsap.fromTo(
     ".project-card",
-    { y: 32 },
+    { y: 34, opacity: 0 },
     {
       y: 0,
+      opacity: 1,
       duration: 0.55,
       stagger: 0.06,
       ease: "power3.out",
@@ -729,7 +791,7 @@ const animateCards = () => {
             trigger: ".project-grid",
             start: "top 88%",
             end: "bottom 14%",
-            toggleActions: "play none none reverse"
+            toggleActions: "restart none none reverse"
           }
         : undefined
     }
@@ -745,8 +807,8 @@ const init = () => {
   setupEvents();
   setupAdmin();
   applyFilters();
-  window.addEventListener("load", initAnimations);
-  setTimeout(initAnimations, 1800);
+  window.addEventListener("load", probeAnimations);
+  window.setTimeout(probeAnimations, 350);
 };
 
 init();
